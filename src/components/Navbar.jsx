@@ -7,7 +7,7 @@ function Navbar({ setsidebar, sidebar }) {
                 sidebar &&
                 <div className="h-screen w-screen bg-gray-900 opacity-75 inset-0 fixed lg:hidden" onClick={() => { setsidebar(false) }}></div>
             }
-            <GiHamburgerMenu className="text-2xl cursor-pointer" onClick={() => { setsidebar(!sidebar) }} />
+            <GiHamburgerMenu className="text-2xl cursor-pointer lg:hidden" onClick={() => { setsidebar(!sidebar) }} />
         </nav>
     )
 }

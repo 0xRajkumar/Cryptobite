@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Sidebar, Navbar, Footer } from '@/src/components'
 function Layout({ children }) {
     const [sidebar, setsidebar] = useState(false)
-    console.log(sidebar)
     return (
         <main>
             <Head>

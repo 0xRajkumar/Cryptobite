@@ -35,7 +35,7 @@ function Footer() {
                         </span>
                         <span className="mt-7 md:mt-1">
                             Created by
-                            <a className="underline hover:text-primary-gray-20 pl-1" href="https://www.linkedin.com/in/crabiller/">
+                            <a className="underline hover:text-primary-gray-20 pl-1" >
                                 Raj &#38; Ajay
                             </a>
                         </span>
