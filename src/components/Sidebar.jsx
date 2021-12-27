@@ -23,7 +23,7 @@ function Sidebar({ setsidebar, sidebar }) {
                 <li><Link href='/'><a onClick={() => { setsidebar(false) }} className={`${activeRoute === "/" ? "bg-indigo-700" : ""} flex items-center gap-x-2 pl-6 py-3 text-xl`} ><FaHome /> Home</a></Link></li>
                 <li><Link href='/cryptocurrencies'><a onClick={() => { setsidebar(false) }} className={`${activeRoute === "/cryptocurrencies" ? "bg-indigo-700" : ""} flex items-center gap-x-2 pl-6 py-3 text-xl`}  ><BsCurrencyBitcoin /> Cryptocurrencies</a></Link></li>
                 <li><Link href='/exchanges'><a onClick={() => { setsidebar(false) }} className={`${activeRoute === "/exchanges" ? "bg-indigo-700" : ""} flex items-center gap-x-2 pl-6 py-3 text-xl`}  ><BsCurrencyExchange /> Exchanges</a></Link></li>
-                <li><Link href='/news'><a onClick={() => { setsidebar(false) }} className={`${activeRoute === "/news" ? "bg-indigo-700" : ""} flex items-center gap-x-2 pl-6 py-3 text-xl`}  ><FaNewspaper /> News</a></Link></li>
+                <li><Link href='/watchlist'><a onClick={() => { setsidebar(false) }} className={`${activeRoute === "/watchlist" ? "bg-indigo-700" : ""} flex items-center gap-x-2 pl-6 py-3 text-xl`}  ><FaNewspaper /> WatchList</a></Link></li>
             </ul>
         </aside>
     )

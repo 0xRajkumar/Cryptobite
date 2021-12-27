@@ -23,8 +23,8 @@ function Footer() {
                         <Link href='/exchanges'><a className={activeRoute === "/exchanges" ? "text-gray-700" : "" + " hover:text-gray-700"}>
                             Exchanges
                         </a></Link>
-                        <Link href='/news'><a className={activeRoute === "/news" ? "text-gray-700" : "" + " hover:text-gray-700"}>
-                            News
+                        <Link href='/watchlist'><a className={activeRoute === "/watchlist" ? "text-gray-700" : "" + " hover:text-gray-700"}>
+                            WatchList
                         </a></Link>
                     </nav>
                     <div className="md:hidden mt-4 mx-auto w-11 h-px rounded-full ">
