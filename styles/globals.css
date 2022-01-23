@@ -3,6 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+}
 @layer base {
   html,
   body {
@@ -10,3 +12,6 @@
   }
 }
 
+.real-width {
+  width: calc(100vw - 256px);
+}
