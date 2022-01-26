@@ -1,23 +1,26 @@
 import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState, useEffect } from 'react'
-import axios from "axios";
+import axios from "axios"
 import { Currencies } from '@/src/config/api'
-import { useQuery } from 'react-query'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCurrency } from '@/src/redux/slices/currencySlice'
 function Navbar({ setsidebar, sidebar }) {
     const dispatch = useDispatch()
+    const [AllCurrencies, setAllCurrencies] = useState(null);
     const [currencies, setcurrencies] = useState(null)
     const [dropdown, setdropdown] = useState(false)
     const currency = useSelector(state => state.currency.value)
-    const fetchCurrencies = async () =>
-        await axios.get(Currencies());
-    const { data } = useQuery("currencies", () =>
-        fetchCurrencies()
-    );
-
+    async function fetchcurrencies() {
+        try {
+            const { data: AllCurrencies } = await axios.get(Currencies());
+            setAllCurrencies(AllCurrencies)
+        } catch (err) {
+            console.log(err);
+        }
+    }
     useEffect(() => {
+        fetchcurrencies()
         let initialCurrency = 'inr';
         setcurrencies(initialCurrency)
         dispatch(updateCurrency(initialCurrency))
@@ -39,8 +42,8 @@ function Navbar({ setsidebar, sidebar }) {
                 </div>
                 <div className={`${dropdown ? "block" : "hidden"} py-1 absolute right-0 mt-1 w-24 rounded-md shadow-lg bg-white`}>
                     <div className=" py-1 rounded-sm flex flex-col text-md text-gray-700   cursor-pointer overflow-y-auto" style={{ maxHeight: "calc(100vh - 100px)" }}>
-                        {data &&
-                            data.data.map((name, index) => {
+                        {AllCurrencies &&
+                            AllCurrencies.map((name, index) => {
                                 return <span key={index} className='hover:bg-gray-300 pl-3' onClick={() => { setcurrencies(name); setdropdown(false); dispatch(updateCurrency(name)) }}>
                                     {name.toUpperCase()}
                                 </span>

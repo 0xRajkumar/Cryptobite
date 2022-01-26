@@ -22,7 +22,7 @@ function Layout({ children }) {
         </div>
     );
     return (
-        <main>
+        <main >
             <Head>
                 <title>Cryptobite</title>
                 <meta name="description" content="Cryptobite" />

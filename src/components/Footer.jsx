@@ -8,22 +8,22 @@ function Footer() {
         setactiveRoute(pathname)
     }, [pathname])
     return (
-        <footer className="px-3 py-4 bg-white  text-2 text-gray-500  transition-colors duration-200">
+        <footer className="px-3 py-4 bg-slate-800 opacity-95   text-2 text-white  transition-colors duration-200">
             <div className="flex flex-col">
                 <div className="md:hidden mt-7 mx-auto w-11 h-px rounded-full">
                 </div>
                 <div className="mt-4 md:mt-0 flex flex-col md:flex-row">
                     <nav className="flex-1 flex flex-col items-center justify-center md:items-end md:border-r border-gray-100 md:pr-5">
-                        <Link href='/'><a className={activeRoute === "/" ? "text-gray-700" : "" + " hover:text-gray-700"}>
+                        <Link href='/'><a className={activeRoute === "/" ? "text-gray-300" : "" + " hover:text-gray-300"}>
                             Home
                         </a></Link>
-                        <Link href='/cryptocurrencies'><a className={activeRoute === "/cryptocurrencies" ? "text-gray-700" : "" + " hover:text-gray-700"}>
+                        <Link href='/cryptocurrencies'><a className={activeRoute === "/cryptocurrencies" ? "text-gray-300" : "" + " hover:text-gray-300"}>
                             Cryptocurrencies
                         </a></Link>
-                        <Link href='/exchanges'><a className={activeRoute === "/exchanges" ? "text-gray-700" : "" + " hover:text-gray-700"}>
+                        <Link href='/exchanges'><a className={activeRoute === "/exchanges" ? "text-gray-300" : "" + " hover:text-gray-300"}>
                             Exchanges
                         </a></Link>
-                        <Link href='/watchlist'><a className={activeRoute === "/watchlist" ? "text-gray-700" : "" + " hover:text-gray-700"}>
+                        <Link href='/watchlist'><a className={activeRoute === "/watchlist" ? "text-gray-300" : "" + " hover:text-gray-300"}>
                             WatchList
                         </a></Link>
                     </nav>
