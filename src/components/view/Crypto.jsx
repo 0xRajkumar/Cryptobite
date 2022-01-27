@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import ReactHtmlParser from 'react-html-parser'
 import { Line } from "react-chartjs-2";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,11 +29,14 @@ function Crypto({ id }) {
     const [historicData, sethistoricData] = useState(null);
     const [Coin, setCoin] = useState(null);
     const [days, setdays] = useState(1);
+    const [Heart, setHeart] = useState(null);
     const currency = useSelector(state => state.currency.value)
     async function fetchsingleCoin() {
         try {
-            const { data } = await (axios.get(SingleCoin(id)))
-            setCoin(data)
+            const { data: coin } = await (axios.get(SingleCoin(id)))
+            setCoin(coin)
+            const coins = localStorage.getItem("coins")
+            const heart = JSON.parse(coins).filter(data => { if (data == coin.id) { setHeart(true) } })
         } catch (error) {
             console.log(error)
         }
@@ -41,7 +45,6 @@ function Crypto({ id }) {
     async function chartData() {
         try {
             const { data } = await (axios.get(HistoricalChart(id, days, currency)))
-            console.log(data.prices)
             sethistoricData(data.prices)
         } catch (error) {
             console.log(error)
@@ -52,9 +55,42 @@ function Crypto({ id }) {
         fetchsingleCoin();
         chartData()
     }, [currency, days]);
-
+    function handleRemove() {
+        if (Heart) {
+            const coins = JSON.parse(localStorage.getItem("coins"))
+            let index = coins.indexOf(Coin.id)
+            coins.splice(index, 1)
+            localStorage.setItem("coins", JSON.stringify(coins))
+            setHeart(false)
+        }
+    }
+    function handleHeart() {
+        if (!Heart) {
+            const coins = JSON.parse(localStorage.getItem("coins"))
+            if (!coins) {
+                coins = []
+            }
+            coins.push(Coin.id)
+            localStorage.setItem("coins", JSON.stringify(coins))
+            setHeart(true)
+        }
+    }
+    function heart() {
+        if (Heart) {
+            return (
+                <AiFillHeart className='absolute w-10 h-10 right-10' onClick={handleRemove} />
+            )
+        } else {
+            return (
+                <AiOutlineHeart className='absolute w-10 h-10 right-10' onClick={handleHeart} />
+            )
+        }
+    }
     return (
         <div className=' space-y-3 py-2 bg-blue-900 text-white  w-full lg:real-width px-2' >
+            {
+                heart()
+            }
             {Coin &&
                 <div>
                     <div className='text-center'>
