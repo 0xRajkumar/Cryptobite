@@ -8,7 +8,6 @@ function Exchange() {
     async function fetchExchanges() {
         const { data: exchanges } = await axios.get(Exchanges())
         setexchanges(exchanges)
-        console.log(exchanges)
     }
     useEffect(() => {
         fetchExchanges()
@@ -34,7 +33,6 @@ function Exchange() {
                                 exchanges &&
                                 exchanges
                                     .map((data, index) => {
-                                        console.log(data)
                                         const { name, description, image, url, trust_score_rank, trade_volume_24h_btc } = data
                                         return (
                                             <tr key={index} className=' hover:bg-gray-800 duration-300 '>
