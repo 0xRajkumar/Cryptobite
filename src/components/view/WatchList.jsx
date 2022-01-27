@@ -17,9 +17,9 @@ function WatchList() {
     }, []);
 
     return (
-        <div className=' space-y-3 py-2 bg-blue-900 text-white  w-full lg:real-width px-2' >
-            <h1>Your WishList</h1>
-            <div className='px-2'>
+        <div className='  py-5 px-4 bg-slate-900 text-white  w-full lg:real-width ' >
+            <h1 className='sm:text-4xl mb-2 md:text-5xl font-bold font-mono text-xl'>Exchanges</h1>
+            <div className=''>
                 <table className=' w-full ' >
                     <thead className='bg-blue-500 rounded-full py-4'>
                         <tr>
