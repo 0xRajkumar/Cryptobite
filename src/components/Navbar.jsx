@@ -26,7 +26,6 @@ function Navbar({ setsidebar, sidebar }) {
         dispatch(updateCurrency(initialCurrency))
     }, [])
 
-    console.log(currency)
     return (
         <nav className="h-16 flex items-center px-4 justify-between  sticky top-0 bg-gray-900">
             {

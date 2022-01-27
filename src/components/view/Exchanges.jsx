@@ -23,11 +23,9 @@ function Exchange() {
                             <tr>
                                 <th className='text-left p-3 '>Coin
                                 </th>
-                                <th className='text-right p-3'>Price
+                                <th className='text-right p-3'>trust_score_rank
                                 </th>
-                                <th className='text-right p-3'> 24h Change
-                                </th>
-                                <th className='text-right p-3'> Market Cap
+                                <th className='text-right p-3'>trade_volume_24h_btc
                                 </th>
                             </tr>
                         </thead>
@@ -36,7 +34,8 @@ function Exchange() {
                                 exchanges &&
                                 exchanges
                                     .map((data, index) => {
-                                        const { name, description, image, url } = data
+                                        console.log(data)
+                                        const { name, description, image, url, trust_score_rank, trade_volume_24h_btc } = data
                                         return (
                                             <tr key={index} className=' hover:bg-gray-800 duration-300 '>
                                                 <td className='text-left flex gap-x-2 p-2'>
@@ -45,12 +44,11 @@ function Exchange() {
                                                         {name.toUpperCase()}
                                                     </h1>
                                                 </td>
-                                                <td className='text-right'> {description}
+                                                <td className='text-right'> {trust_score_rank}
                                                 </td>
-                                                <td className='text-right'>
+                                                <td className='text-right'>{trade_volume_24h_btc}
                                                 </td>
-                                                <td className='text-right p-2'>
-                                                </td>
+
                                             </tr>
                                         )
                                     })
