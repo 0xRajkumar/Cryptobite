@@ -35,8 +35,8 @@ function Home() {
         fetchcoins(currency)
     }, [currency]);
     return (
-        <div className=' bg-gray-900 px-4 w-full lg:real-width py-8 ' >
-            <h1 className='text-xl sm:text-3xl flex justify-between items-end mb-2'><span>Exchanges</span> <Link href="/exchanges"><a><span className=' underline-offset-2 underline'>More</span> </a></Link></h1>
+        <div className=' bg-gray-900 px-4 w-full lg:real-width py-8 ' style={{ minHeight: "calc(100vh - 192px)" }} >
+            <h1 className='text-xl font-mono sm:text-3xl flex justify-between items-end mb-2'><span>Exchanges</span> <Link href="/exchanges"><a><span className=' underline-offset-2  underline'>More</span> </a></Link></h1>
             <div className='flex flex-row px-3 py-3 gap-2 rounded-2xl mb-8 bg-blue-900 overflow-x-scroll scrollbar-hide'>
                 {
                     exchanges ? exchanges.slice(0, 10).map((inData, index) => {
@@ -55,7 +55,7 @@ function Home() {
                         : ""
                 }
             </div>
-            <h1 className='text-xl sm:text-3xl mb-2'>Trending cryptocurrencies</h1>
+            <h1 className='text-xl font-mono sm:text-3xl mb-2'>Trending cryptocurrencies</h1>
             <div className='flex flex-row px-3 mb-8 py-3 gap-2 rounded-2xl bg-blue-900 overflow-x-scroll scrollbar-hide'>
                 {trendingCoins && trendingCoins.map((data, index) => {
                     const { image, name, id, symbol, current_price, price_change_percentage_24h } = data
@@ -72,7 +72,7 @@ function Home() {
                     )
                 })}
             </div>
-            <h1 className='text-xl sm:text-3xl mb-2 flex justify-between items-end'><span>Cryptocurrencies</span> <Link href="/cryptocurrencies"><a><span className=' underline-offset-2 underline'>More</span> </a></Link> </h1>
+            <h1 className='text-xl sm:text-3xl mb-2 flex font-mono justify-between items-end'><span>Cryptocurrencies</span> <Link href="/cryptocurrencies"><a><span className=' underline-offset-2 underline'>More</span> </a></Link> </h1>
             <div className='flex flex-row px-3 mb-8 py-3 gap-2 rounded-2xl bg-blue-900 overflow-x-scroll scrollbar-hide'>
                 {Coins && Coins.slice(0, 20).map((data, index) => {
                     const { image, name, symbol, current_price, price_change_percentage_24h, id } = data
@@ -89,7 +89,7 @@ function Home() {
                     )
                 })}
             </div>
-        </div >
+        </ div >
     )
 }
 

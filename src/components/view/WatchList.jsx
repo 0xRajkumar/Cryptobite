@@ -17,10 +17,11 @@ function WatchList() {
     }, []);
 
     return (
-        <div className='  py-5 px-4 bg-slate-900 text-white  w-full lg:real-width ' >
-            <h1 className='sm:text-4xl mb-2 md:text-5xl font-bold font-mono text-xl'>Exchanges</h1>
-            <div className=''>
-                <table className=' w-full ' >
+        <div div className='  py-5 px-4 bg-slate-900 text-white  w-full lg:real-width ' style={{ minHeight: "calc(100vh - 192px)" }
+        }>
+            <h1 className='sm:text-4xl mb-2 md:text-5xl font-bold font-mono text-xl'>Watchlist</h1>
+            <div className='mb-4 overflow-x-auto' >
+                <table className=' w-full ' style={{ minWidth: "500px" }} >
                     <thead className='bg-blue-500 rounded-full py-4'>
                         <tr>
                             <th className='text-left p-3 '>Coin
@@ -49,11 +50,17 @@ function WatchList() {
                                                 </div>
                                             </a></Link>
                                         </td>
-                                        <td className='text-right'> {current_price ?? "Nothing"} {currency.toUpperCase()}
+                                        <td className='text-right'> <Link href={`/cryptocurrencies/${id}`}><a >
+                                            {current_price ?? "Nothing"} {currency.toUpperCase()}
+                                        </a></Link>
                                         </td>
-                                        <td className='text-right'> {price_change_percentage_24h > 0 ? <span className='text-green-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span> : <span className='text-red-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span>}
+                                        <td className='text-right'>      <Link href={`/cryptocurrencies/${id}`}><a >
+                                            {price_change_percentage_24h > 0 ? <span className='text-green-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span> : <span className='text-red-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span>}
+                                        </a></Link>
                                         </td>
-                                        <td className='text-right p-2'> {total_supply ?? "Don't know"}
+                                        <td className='text-right p-2'>  <Link href={`/cryptocurrencies/${id}`}><a >
+                                            {total_supply ?? "Don't know"}
+                                        </a></Link>
                                         </td>
                                     </tr>
                                 )
@@ -63,7 +70,7 @@ function WatchList() {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     )
 }
 

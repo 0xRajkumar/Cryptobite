@@ -22,16 +22,17 @@ function Exchange() {
         setPagination({ start, end })
     }, [Counter]);
 
+
     useEffect(() => {
         fetchExchanges()
     }, []);
     return (
-        <div className=' space-y-3 py-5 bg-slate-900 text-white  w-full lg:real-width px-4' >
+        <div className=' space-y-3 py-5 bg-slate-900 text-white  w-full lg:real-width px-4' style={{ minHeight: "calc(100vh - 192px)" }} >
             <h1 className='sm:text-4xl mb-2 md:text-5xl font-bold font-mono text-xl'>Exchanges</h1>
             <div className=''>
                 <input type="text" value={Name} onChange={(e) => { setName(e.target.value) }} placeholder='Search with name' className='border-2 mb-4  sticky top-20 text-gray-500 border-slate-900  w-full outline-none rounded-lg px-3 py-2 ' />
-                <div className='mb-4'>
-                    <table className=' w-full ' >
+                <div className='mb-4 overflow-x-auto' >
+                    <table className=' w-full ' style={{ minWidth: "500px" }} >
                         <thead className='bg-blue-500 rounded-full py-4'>
                             <tr>
                                 <th className='text-left p-3 '>Coin

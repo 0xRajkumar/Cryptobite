@@ -9,7 +9,9 @@ function Sidebar({ setsidebar, sidebar }) {
     const [activeRoute, setactiveRoute] = useState(null)
     const { pathname } = useRouter();
     useEffect(() => {
+
         setactiveRoute(pathname)
+        console.log(pathname)
     }, [pathname])
     return (
         <aside className={`${sidebar ? "left-0" : "-left-96"} z-10 w-64 lg:static fixed bg-gray-900 h-screen  duration-500`}>
