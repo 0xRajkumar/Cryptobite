@@ -39,7 +39,7 @@ function Navbar({ setsidebar, sidebar }) {
                         {currencies && currencies.toUpperCase()}
                     </button>
                 </div>
-                <div className={`${dropdown ? "block" : "hidden"} py-1 absolute right-0 mt-1 w-24 rounded-md shadow-lg bg-white`}>
+                <div className={`${dropdown ? "block" : "hidden"} py-1 absolute right-0 z-20 mt-1 w-24 rounded-md shadow-lg bg-white`}>
                     <div className=" py-1 rounded-sm flex flex-col text-md text-gray-700   cursor-pointer overflow-y-auto" style={{ maxHeight: "calc(100vh - 100px)" }}>
                         {AllCurrencies &&
                             AllCurrencies.map((name, index) => {
