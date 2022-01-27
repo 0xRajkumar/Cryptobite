@@ -32,14 +32,14 @@ function Cryptocurrencies() {
     }, [currency]);
 
     return (
-        <div className=' space-y-3 py-2 bg-blue-900 text-white  w-full lg:real-width px-2' >
-            <h1 className='sm:text-4xl text-xl'>CryptoCurrency</h1>
-            <div>
-                <input type="text" value={Name} onChange={(e) => { setName(e.target.value) }} placeholder='Search with name' className='border-2 sticky top-20 text-gray-500 border-blue-800  w-full outline-none rounded-lg px-2 py-1 ' />
-                <div className='px-2'>
+        <div className=' space-y-3 py-5 bg-slate-900 text-white  w-full lg:real-width px-4' >
+            <h1 className='sm:text-4xl mb-2 md:text-5xl font-bold font-mono text-xl'>Crypto-Currencies</h1>
+            <div className=''>
+                <input type="text" value={Name} onChange={(e) => { setName(e.target.value) }} placeholder='Search with name' className='border-2 mb-4  sticky top-20 text-gray-500 border-slate-900  w-full outline-none rounded-lg px-3 py-2 ' />
+                <div className='mb-4'>
                     <table className=' w-full ' >
-                        <thead className='bg-blue-500 rounded-full py-4'>
-                            <tr>
+                        <thead className='bg-blue-500  py-4'>
+                            <tr className=''>
                                 <th className='text-left p-3 '>Coin
                                 </th>
                                 <th className='text-right p-3'>Price
@@ -63,7 +63,7 @@ function Cryptocurrencies() {
                                     const { name, id, symbol, total_supply, price_change_percentage_24h, image, current_price } = data
                                     return (
                                         <tr key={index} className=' hover:bg-gray-800 duration-300 '>
-                                            <td className=''>
+                                            <td className='p-3'>
                                                 <Link href={`/cryptocurrencies/${id}`} ><a className='text-left flex gap-x-2 p-2'>
                                                     <img src={image} alt="" className='h-12 w-12 rounded-full' />
                                                     <div className='flex flex-col'>
@@ -72,11 +72,20 @@ function Cryptocurrencies() {
                                                     </div>
                                                 </a></Link>
                                             </td>
-                                            <td className='text-right'> {current_price ?? "Nothing"} {currency.toUpperCase()}
+                                            <td className='p-3 text-right'>
+                                                <Link href={`/cryptocurrencies/${id}`}><a >
+                                                    {current_price ?? "Nothing"} {currency.toUpperCase()}
+                                                </a></Link>
                                             </td>
-                                            <td className='text-right'> {price_change_percentage_24h > 0 ? <span className='text-green-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span> : <span className='text-red-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span>}
+                                            <td className='p-3  text-right'>
+                                                <Link href={`/cryptocurrencies/${id}`}><a >
+                                                    {price_change_percentage_24h > 0 ? <span className='text-green-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span> : <span className='text-red-500'>{Math.floor(price_change_percentage_24h * 1000) / 1000} %</span>}
+                                                </a></Link>
                                             </td>
-                                            <td className='text-right p-2'> {total_supply ?? "Don't know"}
+                                            <td className='text-right p-3'>
+                                                <Link href={`/cryptocurrencies/${id}`}><a >
+                                                    {total_supply ?? "Don't know"}
+                                                </a></Link>
                                             </td>
                                         </tr>
                                     )
@@ -87,8 +96,8 @@ function Cryptocurrencies() {
                     </table>
                 </div>
                 <div className='flex justify-between'>
-                    <button onClick={() => { if (Counter === 1) { setCounter(10) } else { setCounter(Counter - 1) } }} className='px-4 py-2 bg-cyan-500 m-1 rounded-2xl hover:bg-cyan-600 duration-300 active:translate-y-1 border-2 border-gray-800'>Left</button>
-                    <button onClick={() => { if (Counter === 10) { setCounter(1) } else { setCounter(Counter + 1) } }} className='px-4 py-2 bg-cyan-500 m-1 rounded-2xl hover:bg-cyan-600 duration-300 active:translate-y-1 border-2 border-gray-800'>Rigth</button>
+                    <button onClick={() => { if (Counter === 1) { setCounter(10) } else { setCounter(Counter - 1) } }} className='px-4 py-2 bg-cyan-700 m-1 rounded-2xl hover:bg-cyan-600 duration-300 active:translate-y-1 border-2 border-cyan-900 text-white'>Left</button>
+                    <button onClick={() => { if (Counter === 10) { setCounter(1) } else { setCounter(Counter + 1) } }} className='px-4 py-2 bg-cyan-700 m-1 rounded-2xl hover:bg-cyan-600 duration-300 active:translate-y-1 border-2 border-cyan-900 text-white'>Rigth</button>
                 </div>
             </div>
         </div>
