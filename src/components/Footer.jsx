@@ -8,7 +8,7 @@ function Footer() {
         setactiveRoute(pathname)
     }, [pathname])
     return (
-        <footer className="px-3 py-4 bg-slate-800 opacity-95   text-2 text-white  transition-colors duration-200">
+        <footer className="px-3 py-4 bg-slate-800    text-2 text-white  transition-colors duration-200">
             <div className="flex flex-col">
                 <div className="md:hidden mt-7 mx-auto w-11 h-px rounded-full">
                 </div>

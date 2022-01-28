@@ -89,79 +89,91 @@ function Crypto({ id }) {
     return (
         <div className='  py-5 bg-slate-900 text-white  w-full lg:real-width px-4' style={{ minHeight: "calc(100vh - 192px)" }}>
             {
-                heart()
+                Coin ?
+                    <>
+                        {
+                            heart()
+                        }
+                        {Coin &&
+                            <div className='text-center'>
+                                <div className=''>
+                                    <img src={Coin.image.large} alt="crypto_image" className='rounded-full m-auto mb-2' />
+                                    <h1 className='sm:text-6xl text-4xl font-mono font-bold mb-2'>{Coin.name}</h1>
+                                    <p className='text-gray-400 mb-2'>{ReactHtmlParser(Coin.description.en.split(". ")[0])}</p>
+                                    <p className=' sm:text-xl text-base'>Rank: {Coin.market_cap_rank}</p>
+                                    <p className='mb-2 sm:text-xl text-base'>
+                                        <span>Price: {Coin.market_data.current_price[currency.toLowerCase()]} {currency.toUpperCase()}</span> <br />  &nbsp;&nbsp;&nbsp;
+                                        <span>MarketCap: {Coin.market_data.market_cap[currency.toLowerCase()]} {currency.toUpperCase()}</span>
+                                    </p>
+                                </div>
+                                {
+                                    historicData &&
+
+                                    <Line
+                                        data={{
+                                            labels: historicData.map((coin) => {
+                                                let date = new Date(coin[0]);
+                                                let time =
+                                                    date.getHours() > 12
+                                                        ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                                                        : `${date.getHours()}:${date.getMinutes()} AM`;
+                                                return days === 1 ? time : date.toLocaleDateString();
+                                            }),
+
+                                            datasets: [
+                                                {
+                                                    data: historicData.map((coin) => coin[1]),
+                                                    label: `Price ( Past ${days} Days ) in ${currency}`,
+                                                    borderColor: "#EEBC1D",
+                                                },
+                                            ],
+                                        }}
+                                        options={{
+                                            elements: {
+                                                point: {
+                                                    radius: 1,
+                                                },
+                                            },
+                                        }}
+                                    />
+                                }
+                                <div className='py-4'>
+                                    {[
+                                        {
+                                            label: "24 Hours",
+                                            value: 1
+                                        },
+
+                                        {
+                                            label: "30 Days",
+                                            value: 30
+                                        },
+                                        {
+                                            label: "3 Months",
+                                            value: 90
+                                        },
+                                        {
+                                            label: "1 Year",
+                                            value: 365
+                                        },
+                                    ].map((data, index) => {
+                                        return (
+                                            <button key={index} className={`px-3 py-1 m-1  hover:bg-slate-800 duration-300 rounded-xl ${data.value == days ? "bg-slate-800" : "bg-slate-700"}`} onClick={() => { setdays(data.value) }}>
+                                                {data.label}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </div>}
+                    </>
+                    :
+                    <>
+                        <div className='flex h-full  w-full  justify-center justify-items-center items-center' style={{ minHeight: "calc(100vh - 192px)" }}>
+                            <div className='animate-spin rounded-full h-32 w-32 border-b-2 border-white '>
+                            </div>
+                        </div>
+                    </>
             }
-            {Coin &&
-                <div className='text-center'>
-                    <div className=''>
-                        <img src={Coin.image.large} alt="crypto_image" className='rounded-full m-auto mb-2' />
-                        <h1 className='sm:text-6xl text-4xl font-mono font-bold mb-2'>{Coin.name}</h1>
-                        <p className='text-gray-400 mb-2'>{ReactHtmlParser(Coin.description.en.split(". ")[0])}</p>
-                        <p className=' sm:text-xl text-base'>Rank: {Coin.market_cap_rank}</p>
-                        <p className='mb-2 sm:text-xl text-base'>
-                            <span>Price: {Coin.market_data.current_price[currency.toLowerCase()]}</span> <br />  &nbsp;&nbsp;&nbsp;
-                            <span>MarketCap: {Coin.market_data.market_cap[currency.toLowerCase()]}</span>
-                        </p>
-                    </div>
-                    {
-                        historicData &&
-
-                        <Line
-                            data={{
-                                labels: historicData.map((coin) => {
-                                    let date = new Date(coin[0]);
-                                    let time =
-                                        date.getHours() > 12
-                                            ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                                            : `${date.getHours()}:${date.getMinutes()} AM`;
-                                    return days === 1 ? time : date.toLocaleDateString();
-                                }),
-
-                                datasets: [
-                                    {
-                                        data: historicData.map((coin) => coin[1]),
-                                        label: `Price ( Past ${days} Days ) in ${currency}`,
-                                        borderColor: "#EEBC1D",
-                                    },
-                                ],
-                            }}
-                            options={{
-                                elements: {
-                                    point: {
-                                        radius: 1,
-                                    },
-                                },
-                            }}
-                        />
-                    }
-                    <div className='py-4'>
-                        {[
-                            {
-                                label: "24 Hours",
-                                value: 1
-                            },
-
-                            {
-                                label: "30 Days",
-                                value: 30
-                            },
-                            {
-                                label: "3 Months",
-                                value: 90
-                            },
-                            {
-                                label: "1 Year",
-                                value: 365
-                            },
-                        ].map((data, index) => {
-                            return (
-                                <button key={index} className='px-3 py-1 m-1 bg-slate-700 hover:bg-slate-800 duration-300 rounded-xl' onClick={() => { setdays(data.value) }}>
-                                    {data.label}
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>}
         </div>
     );
 }
