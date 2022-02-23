@@ -54,6 +54,13 @@ function Crypto({ id }) {
     useEffect(() => {
         fetchsingleCoin();
         chartData()
+        const fetchAgainAgain = setInterval(() => {
+            fetchsingleCoin();
+            chartData()
+        }, 30000);
+        return () => {
+            clearInterval(fetchAgainAgain)
+        }
     }, [currency, days]);
     function handleRemove() {
         if (Heart) {
