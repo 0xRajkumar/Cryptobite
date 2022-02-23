@@ -29,6 +29,12 @@ function Cryptocurrencies() {
 
     useEffect(() => {
         fetchcoins(currency)
+          const fetchAgainAgain = setInterval(() => {
+            fetchcoins(currency)
+        }, 30000);
+        return () => {
+            clearInterval(fetchAgainAgain);
+        }
     }, [currency]);
 
     return (
